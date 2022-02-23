@@ -1,10 +1,14 @@
-mod lc717;
+mod lc917;
+use lc917::Solution;
 
 fn main() {
-    let s = lc717::Solution::is_one_bit_character(vec![1, 0, 0]);
-    assert_eq!(s, true);
+    let s = Solution::reverse_only_letters("ab-cd".to_string());
+    assert_eq!(s, "dc-ba".to_string());
     println!("{}", s);
-    let s = lc717::Solution::is_one_bit_character(vec![1, 1, 1, 0]);
-    assert_eq!(s, false);
+    let s = Solution::reverse_only_letters("a-bC-dEf-ghIj".to_string());
+    assert_eq!(s, "j-Ih-gfE-dCba".to_string());
+    println!("{}", s);
+    let s = Solution::reverse_only_letters("Test1ng-Leet=code-Q!".to_string());
+    assert_eq!(s, "Qedo1ct-eeLg=ntse-T!".to_string());
     println!("{}", s);
 }
