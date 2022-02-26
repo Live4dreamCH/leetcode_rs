@@ -1,14 +1,14 @@
-mod lc917;
-use lc917::Solution;
+mod lc2016;
+use lc2016::Solution;
 
 fn main() {
-    let s = Solution::reverse_only_letters("ab-cd".to_string());
-    assert_eq!(s, "dc-ba".to_string());
-    println!("{}", s);
-    let s = Solution::reverse_only_letters("a-bC-dEf-ghIj".to_string());
-    assert_eq!(s, "j-Ih-gfE-dCba".to_string());
-    println!("{}", s);
-    let s = Solution::reverse_only_letters("Test1ng-Leet=code-Q!".to_string());
-    assert_eq!(s, "Qedo1ct-eeLg=ntse-T!".to_string());
-    println!("{}", s);
+    let s = Solution::maximum_difference(vec![7, 1, 5, 4]);
+    assert_eq!(s, 4);
+    dbg!(s);
+    let s = Solution::maximum_difference(vec![9, 4, 3, 2]);
+    assert_eq!(s, -1);
+    dbg!(s);
+    let s = Solution::maximum_difference(vec![1, 5, 2, 10]);
+    assert_eq!(s, 9);
+    dbg!(s);
 }
