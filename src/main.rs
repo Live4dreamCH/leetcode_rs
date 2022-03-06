@@ -1,18 +1,14 @@
-mod lc1601;
-use lc1601::Solution;
+mod lc2104;
+use lc2104::Solution;
 
 fn main() {
-    let s = Solution::maximum_requests(
-        5,
-        vec![
-            vec![0, 1],
-            vec![1, 0],
-            vec![0, 1],
-            vec![1, 2],
-            vec![2, 0],
-            vec![3, 4],
-        ],
-    );
-    assert_eq!(s, 5);
+    let s = Solution::sub_array_ranges(vec![4, -2, -3, 4, 1]);
+    assert_eq!(s, 59);
+    dbg!(s);
+    let s = Solution::sub_array_ranges(vec![1, 2, 3]);
+    assert_eq!(s, 4);
+    dbg!(s);
+    let s = Solution::sub_array_ranges(vec![1, 3, 3]);
+    assert_eq!(s, 4);
     dbg!(s);
 }
