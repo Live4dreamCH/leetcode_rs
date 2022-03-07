@@ -1,14 +1,17 @@
-mod lc2104;
-use lc2104::Solution;
+mod lc504;
+use lc504::Solution;
 
 fn main() {
-    let s = Solution::sub_array_ranges(vec![4, -2, -3, 4, 1]);
-    assert_eq!(s, 59);
+    let s = Solution::convert_to_base7(100);
+    assert_eq!(s, "202");
     dbg!(s);
-    let s = Solution::sub_array_ranges(vec![1, 2, 3]);
-    assert_eq!(s, 4);
+    let s = Solution::convert_to_base7(-7);
+    assert_eq!(s, "-10");
     dbg!(s);
-    let s = Solution::sub_array_ranges(vec![1, 3, 3]);
-    assert_eq!(s, 4);
+    let s = Solution::convert_to_base7(0);
+    assert_eq!(s, "0");
+    dbg!(s);
+    let s = Solution::convert_to_base7(-8);
+    assert_eq!(s, "-11");
     dbg!(s);
 }
