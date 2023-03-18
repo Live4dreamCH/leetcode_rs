@@ -29,3 +29,5 @@ impl Solution {
         answer
     }
 }
+
+fn main(){}

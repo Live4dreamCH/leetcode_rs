@@ -19,3 +19,4 @@ impl Solution {
         res
     }
 }
+fn main(){}
