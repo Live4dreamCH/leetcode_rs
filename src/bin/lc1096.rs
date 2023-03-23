@@ -1,7 +1,8 @@
 struct Solution;
 impl Solution {
     pub fn brace_expansion_ii(expression: String) -> Vec<String> {
-        ll1::LL1::from(&expression);
+        let mut ll1 = ll1::LL1::new();
+        let parse_tree = ll1.parse(&expression);
         Vec::new()
     }
 
@@ -242,7 +243,7 @@ pub mod ll1 {
         parsing_table: LL1Table,
     }
     impl LL1 {
-        pub fn from(str_ref: &str) -> LL1 {
+        pub fn new() -> LL1 {
             let mut p = LL1 {
                 pos: 0,
                 productions: Productions {
@@ -415,13 +416,9 @@ pub mod ll1 {
                 ],
                 Rc::from(|| println!(" into_expr ")),
             );
-
-            p.parse(str_ref);
-            p
-            // dbg!(p)
         }
 
-        fn parse(&mut self, str_ref: &str) {
+        pub fn parse(&mut self, str_ref: &str) -> ParseTree {
             let mut res = ParseTree {
                 root: ParseTreeNode {
                     symbol: Symbol::NonTerminal(NonTerminal::Expression),
@@ -429,7 +426,7 @@ pub mod ll1 {
                 },
             };
             self.recursive_decent(str_ref, &mut res.root);
-            dbg!(res);
+            dbg!(res)
         }
 
         fn recursive_decent(&mut self, str_ref: &str, curr_node: &mut ParseTreeNode) {
@@ -523,6 +520,7 @@ fn main() {
     Solution::brace_expansion_ii(String::from("a{b,c}{d,e}f{g,h}"));
     Solution::brace_expansion_ii(String::from("{a,b}{c,{d,e}}"));
     Solution::brace_expansion_ii(String::from("{{a,z},a{b,c},{ab,z}}"));
+    Solution::brace_expansion_ii(String::from("{{a,z},a{b,,c},{ab,z}}"));
     // assert_eq!(vec!["a"], Solution::brace_expansion_ii(String::from("a")));
     // assert_eq!(
     //     vec!["a", "b", "c"],
