@@ -55,6 +55,48 @@ pub mod cfg {
             }
         }
     }
+
+    enum Symbol {
+        Expr,
+        Union,
+        Concat,
+        Id(String),
+    }
+    struct ParseTreeNode {
+        curr: Symbol,
+        children: Vec<Symbol>,
+    }
+    pub struct ParseTree {
+        root: ParseTreeNode,
+    }
+    impl ParseTree {
+        pub fn new() -> ParseTree {
+            ParseTree {
+                root: ParseTreeNode {
+                    curr: Symbol::Expr,
+                    children: Vec::new(),
+                },
+            }
+        }
+    }
+    // pub struct AST{}
+}
+
+pub mod parser {
+    use super::cfg::{ParseTree, Token};
+    pub struct RecursiveDecent {}
+    impl RecursiveDecent {
+        pub fn from() -> RecursiveDecent {
+            RecursiveDecent {}
+        }
+        pub fn parse() -> ParseTree {
+            let mut tree = ParseTree::new();
+            tree
+        }
+        // expr ->union | union,expr
+        // union->concat | concat union
+        // concat->word | {expr}
+    }
 }
 
 fn main() {
