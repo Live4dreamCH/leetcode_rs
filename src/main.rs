@@ -1,6 +1,19 @@
 mod lc172;
 use lc172::Solution;
 
+trait A {
+    fn aa(&self);
+    fn aba(&self);
+}
+
+trait B {
+    fn bb(&self);
+    fn aba(&self);
+}
+
+// 既实现A又实现B？
+struct AB {}
+
 fn main() {
     let in_out = [
         (0, 0),
