@@ -62,23 +62,18 @@ enum Symbol {
 }
 // use petgraph::graph::DiGraph;
 
-// pub struct ParseTreeNode {
-//     curr: Symbol,
-//     children: Vec<Symbol>,
-// }
-// pub struct ParseTree {
-//     root: ParseTreeNode,
-// }
-// impl ParseTree {
-//     pub fn new() -> ParseTree {
-//         ParseTree {
-//             root: ParseTreeNode {
-//                 curr: Symbol::Expr,
-//                 children: Vec::new(),
-//             },
-//         }
-//     }
-// }
+pub struct ParseTreeNode {
+    curr: Symbol,
+    children: Vec<Symbol>,
+}
+pub struct ParseTree {
+    root: ParseTreeNode,
+}
+impl ParseTree {
+    pub fn from(root: ParseTreeNode) -> ParseTree {
+        ParseTree { root }
+    }
+}
 // pub struct AST{}
 
 pub struct RecursiveDecent {}
@@ -86,23 +81,27 @@ impl RecursiveDecent {
     pub fn from() -> RecursiveDecent {
         RecursiveDecent {}
     }
-    pub fn parse(&self, tokenizer: &mut Tokenizer) -> DiGraph<Symbol, ()> {
-        let mut tree = DiGraph::new();
-        self.expr();
-        tree.;
-        tree
+    pub fn parse(&self, tokenizer: &mut Tokenizer) -> Result<ParseTree, String> {
+        let mut root = self.expr()?;
+        Ok(ParseTree::from(root))
     }
     // expr ->union | union,expr
-    fn expr(&self) {
+    fn expr(&self) -> Result<ParseTreeNode, String> {
         let mut node = ParseTreeNode {
             curr: Symbol::Expr,
             children: Vec::new(),
         };
+        let mut err_vec = Vec::new();
+        match self.union() {
+            Ok(subtree) => ,
+            Err(_) => todo!(),
+        }
+        node
     }
-    fn union(&self) {}
-    fn concat(&self) {}
     // union->concat | concat union
+    fn union(&self) -> Result<ParseTreeNode, String> {}
     // concat->word | {expr}
+    fn concat(&self) -> Result<ParseTreeNode, String> {}
 }
 
 fn main() {
